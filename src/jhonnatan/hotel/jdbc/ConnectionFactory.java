@@ -9,6 +9,6 @@ package jhonnatan.hotel.jdbc;
  *
  * @author Jhonnatan
  */
-public class NewClass {
+public class ConnectionFactory {
     
 }
