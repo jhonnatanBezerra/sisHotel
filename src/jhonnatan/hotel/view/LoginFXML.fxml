@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-repeat: false;" styleClass="background" stylesheets="@css/loginCss.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="jhonnatan.hotel.controller.LoginController">
+   <children>
+      <TextField layoutX="240.0" layoutY="176.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="211.0" />
+      <PasswordField layoutX="240.0" layoutY="228.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="211.0" />
+      <Label layoutX="150.0" layoutY="173.0" prefHeight="30.0" prefWidth="74.0" text="Usuario" AnchorPane.leftAnchor="150.0">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="158.0" layoutY="225.0" text="Senha" AnchorPane.leftAnchor="150.0">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>
