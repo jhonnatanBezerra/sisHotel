@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="background" stylesheets="@css/loginCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="background" stylesheets="@css/loginCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.LoginController">
    <children>
       <Label text="Hotel Vegas" textFill="#f50000">
          <padding>
@@ -24,7 +24,7 @@
             <Insets right="40.0" />
          </VBox.margin>
       </Label>
-      <TextField promptText="Username">
+      <TextField fx:id="txtUsuario" promptText="Usuario">
          <VBox.margin>
             <Insets left="136.0" right="175.0" />
          </VBox.margin></TextField>
@@ -36,11 +36,12 @@
             <Insets right="40.0" />
          </padding>
       </Label>
-      <TextField promptText="Password">
+      <PasswordField fx:id="txtSenha" promptText="Senha">
          <VBox.margin>
             <Insets left="136.0" right="175.0" />
-         </VBox.margin></TextField>
-      <Button mnemonicParsing="false" text="Entrar">
+         </VBox.margin>
+      </PasswordField>
+      <Button fx:id="btLogin" mnemonicParsing="false" onAction="#logarSistema" text="Entrar">
          <VBox.margin>
             <Insets right="43.0" />
          </VBox.margin>

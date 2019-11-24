@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -23,7 +23,7 @@ public class Hotel extends Application{
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
+        VBox root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
         primaryStage.show();
