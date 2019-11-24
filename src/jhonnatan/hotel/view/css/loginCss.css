@@ -9,6 +9,6 @@
 .background{
   -fx-background-image: url("../css/hotel.jpg");
   -fx-background-position: bottom;
-  -fx-background-repeat: no-repeat;
+  
   -fx-background-size: cover, auto;
 }

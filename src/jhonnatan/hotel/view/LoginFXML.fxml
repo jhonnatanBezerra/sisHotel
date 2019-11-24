@@ -2,43 +2,51 @@
 
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-repeat: false;" styleClass="background" stylesheets="@css/loginCss.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="jhonnatan.hotel.controller.LoginController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="background" stylesheets="@css/loginCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="240.0" layoutY="176.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="211.0" />
-      <PasswordField layoutX="240.0" layoutY="228.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="211.0" />
-      <Label layoutX="150.0" layoutY="173.0" prefHeight="30.0" prefWidth="74.0" text="Usuario" AnchorPane.leftAnchor="150.0">
+      <Label text="Hotel Vegas" textFill="#f50000">
+         <padding>
+            <Insets right="59.0" />
+         </padding>
          <font>
-            <Font name="System Bold Italic" size="20.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label layoutX="158.0" layoutY="225.0" text="Senha" AnchorPane.leftAnchor="150.0">
+            <Font size="76.0" />
+         </font></Label>
+      <Label text="Usuario" textFill="#e50000">
          <font>
-            <Font name="System Bold Italic" size="20.0" />
+            <Font name="Arial Black" size="13.0" />
          </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </textFill>
+         <VBox.margin>
+            <Insets right="40.0" />
+         </VBox.margin>
       </Label>
+      <TextField promptText="Username">
+         <VBox.margin>
+            <Insets left="136.0" right="175.0" />
+         </VBox.margin></TextField>
+      <Label text="Senha" textFill="RED">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+         <padding>
+            <Insets right="40.0" />
+         </padding>
+      </Label>
+      <TextField promptText="Password">
+         <VBox.margin>
+            <Insets left="136.0" right="175.0" />
+         </VBox.margin></TextField>
+      <Button mnemonicParsing="false" text="Entrar">
+         <VBox.margin>
+            <Insets right="43.0" />
+         </VBox.margin>
+      </Button>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </padding>
+</VBox>
