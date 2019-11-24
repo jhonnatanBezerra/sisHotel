@@ -50,8 +50,11 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
         ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
-        if(user.getNome().equals(rs.getString("nome")) && user.getSenha().equals(rs.getString("senha"))){
-            return true;
+        while(rs.next()){
+            if(user.getNome().equals(rs.getString("nome")) && user.getSenha().equals(rs.getString("senha"))){
+                System.out.println("sucesso");
+                return true;
+            }
         }
         
         return false;
