@@ -6,7 +6,10 @@
 package jhonnatan.hotel.controller;
 
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,11 +25,19 @@ public class Hotel extends Application{
 
     
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        VBox root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
-        Scene cena = new Scene(root);
-        primaryStage.setScene(cena);
-        primaryStage.show();
+    public void start(Stage primaryStage) {
+        
+        try {
+            
+            VBox root;
+            root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
+            Scene cena = new Scene(root);
+            primaryStage.setScene(cena);
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Hotel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     

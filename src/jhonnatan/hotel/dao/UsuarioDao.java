@@ -24,8 +24,15 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
     
     
     @Override
-    public void salvar(Usuario obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void salvar(Usuario user) throws SQLException {
+        String sql = "INSERT INTO usuario(nome,email,senha,ativo) VALUES (?,?,?,?)";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, user.getNome());
+        ps.setString(2, user.getEmail());
+        ps.setString(3, user.getSenha());
+        ps.setBoolean(4, true);
+        
     }
 
     @Override
@@ -52,7 +59,6 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
         
         while(rs.next()){
             if(user.getNome().equals(rs.getString("nome")) && user.getSenha().equals(rs.getString("senha"))){
-                System.out.println("sucesso");
                 return true;
             }
         }

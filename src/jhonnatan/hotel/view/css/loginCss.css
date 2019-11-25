@@ -7,8 +7,7 @@
  
 }
 .background{
-  -fx-background-image: url("../css/hotel.jpg");
+  -fx-background-image: url("../css/img/hotel.jpg");
   -fx-background-position: bottom;
-  
   -fx-background-size: cover, auto;
 }
