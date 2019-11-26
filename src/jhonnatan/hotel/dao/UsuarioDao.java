@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JOptionPane;
 import jhonnatan.hotel.jdbc.ConnectionFactory;
 import jhonnatan.hotel.model.Usuario;
 
@@ -32,6 +33,8 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
         ps.setString(2, user.getEmail());
         ps.setString(3, user.getSenha());
         ps.setBoolean(4, true);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Usuario '"+user.getNome()+"' cadastrado");
         
     }
 

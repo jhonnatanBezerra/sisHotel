@@ -5,12 +5,28 @@ and open the template in the editor.
 */
 /* 
     Created on : 25/11/2019, 14:03:02
-    Author     : Admin
+    Author     : Jhonnatan
 */
 
 .btnovo{
     
     -fx-background-image: url("../css/img/user.png");
-    -fx-background-size: cover, auto;
+    -fx-background-size: 85%, auto;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.btSair{
+    -fx-background-image: url("../css/img/sair.png");
+    -fx-background-size: 80%, auto;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.btBusca{
+    -fx-background-image: url("../css/img/buscar.png");
+    -fx-background-size: 55%, auto;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
     
 }

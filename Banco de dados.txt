@@ -1,0 +1,36 @@
+CREATE TABLE `hotel`.`usuario` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  `ativo` TINYINT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`));
+  
+  INSERT INTO `hotel`.`usuario` (`nome`, `email`, `senha`, `ativo`) VALUES ('jhonny', 'jhonny_nav@hotmail.com', '123', '1');
+
+CREATE TABLE `hotel`.`hospede` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `rg` VARCHAR(45) NULL,
+  `cpf` VARCHAR(45) NOT NULL,
+  `telefone` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `logradouro` VARCHAR(45) NOT NULL,
+  `numero` VARCHAR(45) NOT NULL,
+  `bairro` VARCHAR(45) NOT NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `cep` INT NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
+  `usuario` INT NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+INSERT INTO `hotel`.`hospede` (`nome`, `rg`, `cpf`, `telefone`, `email`, `logradouro`, `numero`, `bairro`, `cidade`, `cep`, `estado`, `status`, `usuario`) VALUES ('Joaozinho', '123456', '78945612', '3461-1234', 'joaozinho@hotmail.com', 'av joao de barros', '32', 'centro', 'navirai', '79950000', 'ms', '1', '1');
+
+
+ALTER TABLE `hotel`.`hospede` 
+ADD COLUMN `dataNascimento` DATE NOT NULL AFTER `email`;
+
+UPDATE `hotel`.`hospede` SET `dataNascimento` = '1995-04-03' WHERE (`id` = '1');
+

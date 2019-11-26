@@ -17,7 +17,7 @@ public class ConnectionFactory {
     public static Connection getConnection(){
         try{
             //return DriverManager.getConnection("jdbc:postgresql://localhost:5432/Max-Aula7", "postgres", "root");
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/sis_hotel", "root", "");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel", "root", "");
             
         }catch (SQLException e){
             throw new RuntimeException(e);

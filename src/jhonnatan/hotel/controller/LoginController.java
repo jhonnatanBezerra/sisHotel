@@ -67,7 +67,6 @@ public class LoginController implements Initializable {
                     BorderPane principal; 
                     principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/PrincipalFXML.fxml"));
                     Scene cena = new Scene(principal);
-                    //erro nao converte vbox para borderpane
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     stage.setScene(cena);
                     stage.show();
