@@ -12,6 +12,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import jhonnatan.hotel.jdbc.ConnectionFactory;
 import jhonnatan.hotel.model.Hospede;
+import jhonnatan.hotel.model.Usuario;
+import jhonnatan.hotel.util.Session;
 
 
 /**
@@ -19,14 +21,14 @@ import jhonnatan.hotel.model.Hospede;
  * @author Admin
  */
 public class HospedeDao implements DaoGenerico<Hospede>{
-
+    private Usuario usuarioLogado = Session.getUsuario();
     private Connection conn;
     private PreparedStatement ps = null;
     
     
     @Override
     public void salvar(Hospede hosp) throws SQLException {
-        String sql = "INSERT INTO hospede ('nome', 'rg', 'cpf', 'telefone', 'email', 'dataNascimento', 'logradouro', 'numero', 'bairro', 'cidade', 'cep', 'estado', 'status') VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO hospede (nome, rg, cpf, telefone, email, dataNascimento, logradouro, numero, bairro, cidade, cep, estado, status) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
         ps.setString(1, hosp.getNome());
@@ -42,6 +44,7 @@ public class HospedeDao implements DaoGenerico<Hospede>{
         ps.setInt(11, hosp.getCEP());
         ps.setString(12, hosp.getEstado());
         ps.setBoolean(13, true);
+       // ps.setInt(14, usuarioLogado.getId());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Hospede cadastrado com sucesso!!!");
     }

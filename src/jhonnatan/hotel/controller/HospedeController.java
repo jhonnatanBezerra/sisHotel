@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -34,10 +35,6 @@ public class HospedeController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void novoUsuario(ActionEvent event) {
-        
-    }
 
     @FXML
     private void btVoltaPrincipal(ActionEvent event) {
@@ -53,6 +50,23 @@ public class HospedeController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
+    }
+
+    @FXML
+    private void abreCadastroCliente(ActionEvent event) {
+        try {
+            GridPane cadastroFuncionario = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedeCadastroFXML.fxml"));
+            Scene cena = new Scene(cadastroFuncionario);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     
     }
     

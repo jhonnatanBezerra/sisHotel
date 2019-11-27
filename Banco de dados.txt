@@ -34,3 +34,35 @@ ADD COLUMN `dataNascimento` DATE NOT NULL AFTER `email`;
 
 UPDATE `hotel`.`hospede` SET `dataNascimento` = '1995-04-03' WHERE (`id` = '1');
 
+CREATE TABLE `hotel`.`hospedagem` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `idHospede` INT NOT NULL,
+  `idUsuario` INT NOT NULL,
+  `numeroAP` VARCHAR(45) NOT NULL,
+  `acompanhantes` INT NOT NULL DEFAULT 1,
+  `idReserva` INT NULL,
+  PRIMARY KEY (`id`));
+  
+  
+  ALTER TABLE `hotel`.`hospedagem` 
+ADD INDEX `hospede_idx` (`idHospede` ASC) ,
+ADD INDEX `usuario_idx` (`idUsuario` ASC) ;
+;
+ALTER TABLE `hotel`.`hospedagem` 
+ADD CONSTRAINT `hospede`
+  FOREIGN KEY (`idHospede`)
+  REFERENCES `hotel`.`hospede` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `usuario`
+  FOREIGN KEY (`idUsuario`)
+  REFERENCES `hotel`.`hospede` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `hotel`.`hospedagem` 
+ADD COLUMN `status` TINYINT NOT NULL DEFAULT 1 AFTER `idReserva`;
+
+  
+

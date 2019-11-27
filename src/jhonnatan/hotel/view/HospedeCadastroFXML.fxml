@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="jhonnatan.hotel.controller.HospedeCadastroController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.HospedeCadastroController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,7 +30,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField promptText="Nome completo">
+            <TextField fx:id="txtNome" promptText="Nome completo">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
@@ -40,32 +40,32 @@
                   <Insets bottom="40.0" left="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField promptText="RG" GridPane.rowIndex="1">
+            <TextField fx:id="txtRG" promptText="RG" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField layoutX="10.0" layoutY="84.0" promptText="CPF" GridPane.rowIndex="2">
+            <TextField fx:id="txtCPF" layoutX="10.0" layoutY="84.0" promptText="CPF" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField promptText="Telefone" GridPane.rowIndex="3">
+            <TextField fx:id="txtTelefone" promptText="Telefone" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField promptText="E-mail" GridPane.rowIndex="4">
+            <TextField fx:id="txtEmail" promptText="E-mail" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <DatePicker prefHeight="25.0" prefWidth="261.0" promptText="--/--/----" GridPane.rowIndex="5">
+            <DatePicker fx:id="txtDataNascimento" prefHeight="25.0" prefWidth="261.0" promptText="--/--/----" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </DatePicker>
-            <Button mnemonicParsing="false" text="Cancelar" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#cancelarCadastro" text="Cancelar" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <Label text="RG" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="40.0" left="30.0" />
@@ -112,7 +112,7 @@
                   <Insets bottom="40.0" left="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField promptText="Logradouro">
+            <TextField fx:id="txtLogradouro" promptText="Logradouro">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
@@ -122,17 +122,17 @@
                   <Insets bottom="40.0" left="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField promptText="Numero" GridPane.rowIndex="1">
+            <TextField fx:id="txtNumero" promptText="Numero" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label text="Bairoo" GridPane.rowIndex="2">
+            <Label text="Bairro" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="40.0" left="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField promptText="Bairro" GridPane.rowIndex="2">
+            <TextField fx:id="txtBairro" promptText="Bairro" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
@@ -142,7 +142,7 @@
                   <Insets bottom="40.0" left="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField promptText="Cidade" GridPane.rowIndex="3">
+            <TextField fx:id="txtCidade" promptText="Cidade" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
@@ -152,13 +152,13 @@
                   <Insets bottom="40.0" left="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField promptText="CEP" GridPane.rowIndex="4">
+            <TextField fx:id="txtCEP" promptText="CEP" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="Cadastrar" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-            <TextField promptText="Estado" GridPane.rowIndex="5">
+            <Button mnemonicParsing="false" onAction="#cadastrarHospede" text="Cadastrar" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <TextField fx:id="txtEstado" promptText="Estado" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>

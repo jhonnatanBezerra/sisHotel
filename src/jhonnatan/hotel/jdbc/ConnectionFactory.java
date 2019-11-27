@@ -17,8 +17,8 @@ public class ConnectionFactory {
     public static Connection getConnection(){
         try{
             //return DriverManager.getConnection("jdbc:postgresql://localhost:5432/Max-Aula7", "postgres", "root"); // para usar em casa
-           // return DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel", "root", ""); // para usar na loja
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/sis_hotel", "root", ""); // para usar no notebook
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel", "root", ""); // para usar na loja
+           // return DriverManager.getConnection("jdbc:mysql://localhost:3306/sis_hotel", "root", ""); // para usar no notebook PADRAO
             
             
         }catch (SQLException e){
