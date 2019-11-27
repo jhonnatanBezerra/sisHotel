@@ -82,6 +82,9 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <Pane prefHeight="34.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="34.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblUsuario" layoutX="23.0" layoutY="9.0" text="Usuario: " />
+         </children></Pane>
    </bottom>
 </BorderPane>

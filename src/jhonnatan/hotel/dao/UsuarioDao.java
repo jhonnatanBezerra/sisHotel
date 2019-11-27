@@ -54,20 +54,23 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
     }
     
     
-    public boolean verifica(Usuario user) throws SQLException{
-        String sql = "SELECT * FROM usuario";
+    public Usuario verifica(Usuario user) throws SQLException{
+        String sql = "SELECT * FROM usuario WHERE nome LIKE ? AND senha LIKE ? AND ativo = '1'";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
+        ps.setString(1, user.getNome());
+        ps.setString(2, user.getSenha());
         ResultSet rs = ps.executeQuery();
         
-        while(rs.next()){
-            if(user.getNome().equals(rs.getString("nome")) && user.getSenha().equals(rs.getString("senha"))){
-                return true;
-            }
+        if(rs.next()){
+            Usuario usuarioNovo = new Usuario();
+            usuarioNovo.setId(rs.getInt("id"));
+            usuarioNovo.setNome(rs.getString("nome"));
+            usuarioNovo.setEmail(rs.getString("email"));
+            
+            return usuarioNovo;
         }
-        
-        return false;
-        
+        return null;
     }
     
 }

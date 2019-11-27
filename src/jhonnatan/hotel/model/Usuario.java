@@ -10,10 +10,20 @@ package jhonnatan.hotel.model;
  * @author Jhonnatan
  */
 public class Usuario {
+    private Integer id;
     private String nome;
     private String email;
     private String senha;
     private Boolean ativo;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 
     public String getNome() {
         return nome;

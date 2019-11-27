@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import jhonnatan.hotel.dao.UsuarioDao;
 import jhonnatan.hotel.model.Usuario;
+import jhonnatan.hotel.util.Session;
 
 /**
  * FXML Controller class
@@ -60,10 +61,12 @@ public class LoginController implements Initializable {
             user.setSenha(txtSenha.getText());
         
             UsuarioDao userDao = new UsuarioDao();
-            boolean teste = userDao.verifica(user);
             
-            if(teste == true){
+            
+            
+            if(userDao.verifica(user) != null){
                 try {
+                    Session.setUsuario(user);
                     BorderPane principal; 
                     principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/PrincipalFXML.fxml"));
                     Scene cena = new Scene(principal);

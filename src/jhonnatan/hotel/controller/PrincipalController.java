@@ -7,6 +7,9 @@ package jhonnatan.hotel.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,8 +19,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import jhonnatan.hotel.model.Usuario;
+import jhonnatan.hotel.util.Session;
 
 /**
  * FXML Controller class
@@ -26,12 +32,16 @@ import javafx.stage.Stage;
  */
 public class PrincipalController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    private Usuario usuarioLogado;
+    
+    @FXML
+    private Label lblUsuario;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        usuarioLogado = Session.getUsuario();
+        lblUsuario.setText("Usuario: "+usuarioLogado.getNome());
+        
     }    
 
     @FXML
