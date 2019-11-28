@@ -93,11 +93,12 @@ public class HospedeController implements Initializable {
     }
     
     private void initTabela(){
-        clmID.setCellValueFactory(new PropertyValueFactory("ID"));
-        clmNome.setCellValueFactory(new PropertyValueFactory("cpf"));
-        clmData.setCellValueFactory(new PropertyValueFactory("data"));
+        clmID.setCellValueFactory(new PropertyValueFactory("ID")); // Nome igual ao modelo
+        clmNome.setCellValueFactory(new PropertyValueFactory("nome"));
+        clmCPF.setCellValueFactory(new PropertyValueFactory("CPF"));
+        clmData.setCellValueFactory(new PropertyValueFactory("dataNascimento"));
         clmTelefone.setCellValueFactory(new PropertyValueFactory("telefone"));
-        clmCPF.setCellValueFactory(new PropertyValueFactory("email"));
+        
         tabelaHospede.setItems(atualizarTabela());
         
     }
