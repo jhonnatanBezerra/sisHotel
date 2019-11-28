@@ -22,6 +22,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import jhonnatan.hotel.dao.HospedeDao;
 import jhonnatan.hotel.model.Hospede;
 import jhonnatan.hotel.model.Usuario;
@@ -90,8 +91,10 @@ public class HospedeCadastroController implements Initializable {
     }
 
     @FXML
-    private void cadastrarHospede(ActionEvent event) {
+    private void cadastrarHospede(ActionEvent event)  {
         try {
+            
+            
             Hospede hospede = new Hospede();
             hospede.setNome(txtNome.getText());
             hospede.setRG(txtRG.getText());
@@ -106,17 +109,30 @@ public class HospedeCadastroController implements Initializable {
             hospede.setCEP(Integer.parseInt(txtCEP.getText()));
             hospede.setEstado(txtEstado.getText());
             hospede.setStatus("1");
-           // hospede.setFuncionario(usuarioLogado.getId());
+           
 
+            
             HospedeDao hosDao = new HospedeDao();
-        
-            hosDao.salvar(hospede);
+            hosDao.salvar(hospede); 
+            BorderPane principal;
+            principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedeFXML.fxml"));
+            Scene cena = new Scene(principal);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
+            
+            
             
         } catch (SQLException ex) {
+            Logger.getLogger(HospedeCadastroController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(HospedeCadastroController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
     }
+    
+    
+    
     
 }

@@ -28,7 +28,7 @@ public class HospedeDao implements DaoGenerico<Hospede>{
     
     @Override
     public void salvar(Hospede hosp) throws SQLException {
-        String sql = "INSERT INTO hospede (nome, rg, cpf, telefone, email, dataNascimento, logradouro, numero, bairro, cidade, cep, estado, status) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO hospede (nome, rg, cpf, telefone, email, dataNascimento, logradouro, numero, bairro, cidade, cep, estado, status, usuario) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
         ps.setString(1, hosp.getNome());
@@ -44,7 +44,7 @@ public class HospedeDao implements DaoGenerico<Hospede>{
         ps.setInt(11, hosp.getCEP());
         ps.setString(12, hosp.getEstado());
         ps.setBoolean(13, true);
-       // ps.setInt(14, usuarioLogado.getId());
+        ps.setInt(14, usuarioLogado.getId());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Hospede cadastrado com sucesso!!!");
     }

@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import jhonnatan.hotel.model.Usuario;
 import jhonnatan.hotel.util.Session;
@@ -52,6 +53,21 @@ public class PrincipalController implements Initializable {
             stage.setScene(cena);
             stage.show();
             
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+
+    @FXML
+    private void sairDaAplicacao(ActionEvent event) {
+         VBox root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
+            Scene cena = new Scene(root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
         } catch (IOException ex) {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
