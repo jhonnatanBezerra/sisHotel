@@ -16,9 +16,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import jhonnatan.hotel.model.Hospede;
 
 /**
  * FXML Controller class
@@ -26,6 +29,18 @@ import javafx.stage.Stage;
  * @author Admin
  */
 public class HospedeController implements Initializable {
+    
+    @FXML
+    private TableView<Hospede> tabelaHospede;
+    @FXML
+    private TableColumn<Hospede, Integer> clmID;
+    @FXML
+    private TableColumn<Hospede, String> clmNome;
+    @FXML
+    private TableColumn<Hospede, String> clmCPF;
+    @FXML
+    private TableColumn<Hospede, String> clmTelefone;
+    
 
     /**
      * Initializes the controller class.
