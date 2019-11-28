@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author Admin
  */
 public class Hospede {
+    private Integer ID;
     private String nome;
     private String RG;
     private String CPF;
@@ -26,6 +27,15 @@ public class Hospede {
     private String estado;    
     private String status;
     private Usuario funcionario;
+
+    public Integer getID() {
+        return ID;
+    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
+    
 
     public String getNome() {
         return nome;

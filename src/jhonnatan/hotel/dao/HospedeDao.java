@@ -7,7 +7,9 @@ package jhonnatan.hotel.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import jhonnatan.hotel.jdbc.ConnectionFactory;
@@ -61,7 +63,37 @@ public class HospedeDao implements DaoGenerico<Hospede>{
 
     @Override
     public List<Hospede> listar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Hospede> hospede = new ArrayList<>();
+        String sql = "SELECT * FROM hospede WHERE status = '1'";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Hospede h = new Hospede();
+            h.setID(rs.getInt("id"));
+            h.setNome(rs.getString("nome"));
+            h.setRG(rs.getString("rg"));
+            h.setCPF(rs.getString("cpf"));
+            h.setTelefone(rs.getString("telefone"));
+            h.setEmail(rs.getString("email"));
+            h.setDataNascimento(rs.getDate("dataNascimento"));
+            h.setLogradouro(rs.getString("logradouro"));
+            h.setNumero(rs.getString("numero"));
+            h.setBairro(rs.getString("bairro"));
+            h.setCidade(rs.getString("cidade"));
+            h.setCEP(rs.getInt("cep"));
+            h.setEstado(rs.getString("estado"));
+            h.setStatus(rs.getString("status"));
+           // System.out.println(h.getCPF());
+            hospede.add(h);
+            
+        }
+
+        rs.close();
+        conn.close();
+        ps.close();
+        return hospede;
+        
     }
     
 }

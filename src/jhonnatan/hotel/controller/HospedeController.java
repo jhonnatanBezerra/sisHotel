@@ -7,9 +7,12 @@ package jhonnatan.hotel.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +21,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import jhonnatan.hotel.dao.HospedeDao;
 import jhonnatan.hotel.model.Hospede;
 
 /**
@@ -40,6 +45,8 @@ public class HospedeController implements Initializable {
     private TableColumn<Hospede, String> clmCPF;
     @FXML
     private TableColumn<Hospede, String> clmTelefone;
+    @FXML
+    private TableColumn<Hospede, String> clmData;
     
 
     /**
@@ -47,7 +54,7 @@ public class HospedeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        initTabela();
     }    
 
 
@@ -83,6 +90,28 @@ public class HospedeController implements Initializable {
         }
         
     
+    }
+    
+    private void initTabela(){
+        clmID.setCellValueFactory(new PropertyValueFactory("ID"));
+        clmNome.setCellValueFactory(new PropertyValueFactory("cpf"));
+        clmData.setCellValueFactory(new PropertyValueFactory("data"));
+        clmTelefone.setCellValueFactory(new PropertyValueFactory("telefone"));
+        clmCPF.setCellValueFactory(new PropertyValueFactory("email"));
+        tabelaHospede.setItems(atualizarTabela());
+        
+    }
+    
+    private ObservableList<Hospede> atualizarTabela(){
+        
+        try {
+            HospedeDao hDao = new HospedeDao();
+            return FXCollections.observableArrayList(hDao.listar());
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }
