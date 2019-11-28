@@ -66,7 +66,7 @@ public class LoginController implements Initializable {
             
             if(userDao.verifica(user) != null){
                 try {
-                    Session.setUsuario(user);
+                    Session.setUsuario(userDao.verifica(user));
                     BorderPane principal; 
                     principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/PrincipalFXML.fxml"));
                     Scene cena = new Scene(principal);

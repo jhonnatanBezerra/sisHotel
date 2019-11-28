@@ -7,9 +7,6 @@ package jhonnatan.hotel.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,7 +37,7 @@ public class PrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         usuarioLogado = Session.getUsuario();
-        lblUsuario.setText("Usuario: "+usuarioLogado.getNome());
+        lblUsuario.setText("Usuario: "+usuarioLogado.getId());
         
     }    
 
