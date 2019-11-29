@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import jhonnatan.hotel.dao.HospedeDao;
 import jhonnatan.hotel.model.Hospede;
 
@@ -49,7 +52,7 @@ public class HospedeController implements Initializable {
     private TableColumn<Hospede, String> clmData;
     @FXML
     private TableColumn<Hospede, String> clmEmail;
-    
+    private Hospede hospSelecionado;
 
     /**
      * Initializes the controller class.
@@ -57,6 +60,13 @@ public class HospedeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initTabela();
+        
+        tabelaHospede.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                hospSelecionado = (Hospede) newValue;
+            }
+        });
     }    
 
 
@@ -116,6 +126,26 @@ public class HospedeController implements Initializable {
             Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @FXML
+    private void btAlterar(ActionEvent event) {
+    }
+
+    @FXML
+    private void btExcluir(ActionEvent event) {
+        if(hospSelecionado != null){
+            try {
+                HospedeDao hdao = new HospedeDao();
+                hdao.deletar(hospSelecionado);
+                initTabela();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um Hospede para deletar");
+        }
     }
     
 }
