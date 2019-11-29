@@ -47,6 +47,8 @@ public class HospedeController implements Initializable {
     private TableColumn<Hospede, String> clmTelefone;
     @FXML
     private TableColumn<Hospede, String> clmData;
+    @FXML
+    private TableColumn<Hospede, String> clmEmail;
     
 
     /**
@@ -98,6 +100,7 @@ public class HospedeController implements Initializable {
         clmCPF.setCellValueFactory(new PropertyValueFactory("CPF"));
         clmData.setCellValueFactory(new PropertyValueFactory("dataNascimento"));
         clmTelefone.setCellValueFactory(new PropertyValueFactory("telefone"));
+        clmEmail.setCellValueFactory(new PropertyValueFactory("email"));
         
         tabelaHospede.setItems(atualizarTabela());
         

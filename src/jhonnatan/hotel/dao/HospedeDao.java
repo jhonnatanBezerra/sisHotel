@@ -48,6 +48,8 @@ public class HospedeDao implements DaoGenerico<Hospede>{
         ps.setBoolean(13, true);
         ps.setInt(14, usuarioLogado.getId());
         ps.executeUpdate();
+        conn.close();
+        ps.close();
         JOptionPane.showMessageDialog(null, "Hospede cadastrado com sucesso!!!");
     }
 
@@ -63,7 +65,7 @@ public class HospedeDao implements DaoGenerico<Hospede>{
 
     @Override
     public List<Hospede> listar() throws SQLException {
-        List<Hospede> hospede = new ArrayList<>();
+        List<Hospede> lHospede = new ArrayList<>();
         String sql = "SELECT * FROM hospede WHERE status = '1'";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
@@ -85,14 +87,14 @@ public class HospedeDao implements DaoGenerico<Hospede>{
             h.setEstado(rs.getString("estado"));
             h.setStatus(rs.getString("status"));
            // System.out.println(h.getCPF());
-            hospede.add(h);
+            lHospede.add(h);
             
         }
 
         rs.close();
         conn.close();
         ps.close();
-        return hospede;
+        return lHospede;
         
     }
     

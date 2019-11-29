@@ -31,7 +31,7 @@
             <TableColumn fx:id="clmCPF" prefWidth="198.0" text="CPF" />
             <TableColumn fx:id="clmTelefone" prefWidth="198.0" text="Telefone" />
             <TableColumn fx:id="clmData" prefWidth="198.0" text="Data Nascimento" />
-            <TableColumn fx:id="clmData1" prefWidth="198.0" text="Email" />
+            <TableColumn fx:id="clmEmail" prefWidth="198.0" text="Email" />
         </columns>
       </TableView>
    </center>
