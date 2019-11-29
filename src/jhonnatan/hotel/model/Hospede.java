@@ -148,6 +148,11 @@ public class Hospede {
         this.funcionario = funcionario;
     }
     
-    
+    public void mostraHospede(){
+        System.out.println("---------------------");
+        System.out.println("ID :" +getID());
+        System.out.println("Nome : "+getNome());
+        System.out.println("CPF :"+getCPF());
+    }
     
 }
