@@ -62,7 +62,7 @@ public class HospedeDao implements DaoGenerico<Hospede>{
 
     @Override
     public void deletar(Hospede h) throws SQLException {
-        String sql = "DELETE * FROM hospede WHERE id=?";
+        String sql = "DELETE FROM hospede WHERE id=?";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
         ps.setInt(1, h.getID());
