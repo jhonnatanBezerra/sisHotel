@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import jhonnatan.hotel.jdbc.ConnectionFactory;
 import jhonnatan.hotel.model.Hospede;
@@ -59,8 +61,14 @@ public class HospedeDao implements DaoGenerico<Hospede>{
     }
 
     @Override
-    public void deletar(Hospede obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletar(Hospede h) throws SQLException {
+        String sql = "DELETE * FROM hospede WHERE id=?";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ps.setInt(1, h.getID());
+        ps.execute();
+        ps.close();
+        conn.close();
     }
 
     @Override
@@ -96,6 +104,38 @@ public class HospedeDao implements DaoGenerico<Hospede>{
         ps.close();
         return lHospede;
         
+    }
+    
+    public Hospede  buscar(Integer id) throws SQLException{
+        Hospede h = null;
+        String sql = "SELECT * FROM hospede WHERE id = ?";
+        conn = ConnectionFactory.getConnection();
+        try {
+            ps = conn.prepareStatement(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        
+        while(rs.next()){
+            h = new Hospede();
+            h.setID(rs.getInt("id"));
+            h.setNome(rs.getString("nome"));
+            h.setRG(rs.getString("rg"));
+            h.setCPF(rs.getString("cpf"));
+            h.setTelefone(rs.getString("telefone"));
+            h.setEmail(rs.getString("email"));
+            h.setDataNascimento(rs.getDate("dataNascimento"));
+            h.setLogradouro(rs.getString("logradouro"));
+            h.setNumero(rs.getString("numero"));
+            h.setBairro(rs.getString("bairro"));
+            h.setCidade(rs.getString("cidade"));
+            h.setCEP(rs.getInt("cep"));
+            h.setEstado(rs.getString("estado"));
+            h.setStatus(rs.getString("status"));
+        }
+        return h;
     }
     
 }
