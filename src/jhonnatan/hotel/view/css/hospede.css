@@ -30,3 +30,17 @@ and open the template in the editor.
     -fx-background-repeat: no-repeat;
     
 }
+
+.btAlterar{
+   -fx-background-image: url("../css/img/alterar.png");
+    -fx-background-size: 85%, auto;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat; 
+}
+
+.btExcluir{
+    -fx-background-image: url("../css/img/excluir.png");
+    -fx-background-size: 85%, auto;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat; 
+}

@@ -63,7 +63,8 @@ public class HospedagemDao implements DaoGenerico<Hospedagem>{
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Hospedagem h = new Hospedagem();
-            h.setHospede(buscar(rs.getInt("idHospede")));
+            HospedeDao hDao = new HospedeDao();
+            h.setHospede(hDao.buscar(rs.getInt("idHospede")));
             h.setUsuario(usuarioLogado);
             h.setNumeroAP(rs.getString("numeroAP"));
             h.setQtdAcompanhante(rs.getString("acompanhantes"));
@@ -73,36 +74,36 @@ public class HospedagemDao implements DaoGenerico<Hospedagem>{
         return lHospedagem;
     }
     
-    public Hospede  buscar(Integer id) throws SQLException{
-        Hospede h = null;
-        String sql = "SELECT * FROM hospede WHERE id = ?";
-        conn = ConnectionFactory.getConnection();
-        try {
-            ps = conn.prepareStatement(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
-        
-        while(rs.next()){
-            h = new Hospede();
-            h.setID(rs.getInt("id"));
-            h.setNome(rs.getString("nome"));
-            h.setRG(rs.getString("rg"));
-            h.setCPF(rs.getString("cpf"));
-            h.setTelefone(rs.getString("telefone"));
-            h.setEmail(rs.getString("email"));
-            h.setDataNascimento(rs.getDate("dataNascimento"));
-            h.setLogradouro(rs.getString("logradouro"));
-            h.setNumero(rs.getString("numero"));
-            h.setBairro(rs.getString("bairro"));
-            h.setCidade(rs.getString("cidade"));
-            h.setCEP(rs.getInt("cep"));
-            h.setEstado(rs.getString("estado"));
-            h.setStatus(rs.getString("status"));
-        }
-        return h;
-    }
+//    public Hospede  buscar(Integer id) throws SQLException{
+//        Hospede h = null;
+//        String sql = "SELECT * FROM hospede WHERE id = ?";
+//        conn = ConnectionFactory.getConnection();
+//        try {
+//            ps = conn.prepareStatement(sql);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        ps.setInt(1, id);
+//        ResultSet rs = ps.executeQuery();
+//        
+//        while(rs.next()){
+//            h = new Hospede();
+//            h.setID(rs.getInt("id"));
+//            h.setNome(rs.getString("nome"));
+//            h.setRG(rs.getString("rg"));
+//            h.setCPF(rs.getString("cpf"));
+//            h.setTelefone(rs.getString("telefone"));
+//            h.setEmail(rs.getString("email"));
+//            h.setDataNascimento(rs.getDate("dataNascimento"));
+//            h.setLogradouro(rs.getString("logradouro"));
+//            h.setNumero(rs.getString("numero"));
+//            h.setBairro(rs.getString("bairro"));
+//            h.setCidade(rs.getString("cidade"));
+//            h.setCEP(rs.getInt("cep"));
+//            h.setEstado(rs.getString("estado"));
+//            h.setStatus(rs.getString("status"));
+//        }
+//        return h;
+//    }
     
 }
