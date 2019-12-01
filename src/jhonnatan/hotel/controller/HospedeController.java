@@ -130,15 +130,36 @@ public class HospedeController implements Initializable {
 
     @FXML
     private void btAlterar(ActionEvent event) {
-    }
+        EditarHospedeController.setHospEdit(hospSelecionado);
+        if(hospSelecionado != null){
+            GridPane editarFuncionario;
+            try {
+                editarFuncionario = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/EditarHospedeFXML.fxml"));
+                Scene cena = new Scene(editarFuncionario);
+                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(cena);
+                stage.show();
 
+            } catch (IOException ex) {
+                Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um hospede.");
+        }  
+    }
+        
     @FXML
     private void btExcluir(ActionEvent event) {
         if(hospSelecionado != null){
             try {
                 HospedeDao hdao = new HospedeDao();
-                hdao.deletar(hospSelecionado);
-                initTabela();
+                int res = JOptionPane.showConfirmDialog(null, "Deseja excluir o Hospede: "+hospSelecionado.getNome(),"Excluir",JOptionPane.YES_NO_OPTION);
+                if(res == 0){
+                    hdao.deletar(hospSelecionado);
+                    initTabela();
+                }else{
+                    abreHospedeController(event);
+                }
 
             } catch (SQLException ex) {
                 Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,4 +169,17 @@ public class HospedeController implements Initializable {
         }
     }
     
+    public void abreHospedeController(ActionEvent event){
+        try {
+            BorderPane principal;
+            principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedeFXML.fxml"));
+            Scene cena = new Scene(principal);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
 }
