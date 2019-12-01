@@ -76,18 +76,8 @@ public class HospedeCadastroController implements Initializable {
 
     @FXML
     private void cancelarCadastro(ActionEvent event) {
-       try {
-            BorderPane principal;
-            principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedeFXML.fxml"));
-            Scene cena = new Scene(principal);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(cena);
-            stage.show();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
+       HospedeController root = new HospedeController();
+       root.abreHospedeController(event);   
     }
 
     @FXML
@@ -114,19 +104,13 @@ public class HospedeCadastroController implements Initializable {
             
             HospedeDao hosDao = new HospedeDao();
             hosDao.salvar(hospede); 
-            BorderPane principal;
-            principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedeFXML.fxml"));
-            Scene cena = new Scene(principal);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(cena);
-            stage.show();
-            
-            
-            
+            HospedeController root = new HospedeController();
+            root.abreHospedeController(event);
+              
+               
         } catch (SQLException ex) {
             Logger.getLogger(HospedeCadastroController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(HospedeCadastroController.class.getName()).log(Level.SEVERE, null, ex);
+        
         }
         
         
