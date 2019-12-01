@@ -52,12 +52,34 @@ public class HospedeDao implements DaoGenerico<Hospede>{
         ps.executeUpdate();
         conn.close();
         ps.close();
-        JOptionPane.showMessageDialog(null, "Hospede cadastrado com sucesso!!!");
+        
     }
 
     @Override
-    public void atualizar(Hospede obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atualizar(Hospede hosp) throws SQLException {
+    
+        String sql = "UPDATE hospede SET nome = ?, rg = ?, cpf = ?, telefone = ?, email = ?, dataNascimento = ?, logradouro = ?, numero = ?, bairro = ?, cidade = ?, cep = ?, estado = ?, status = ?, usuario = ? WHERE id = ?";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, hosp.getNome());
+        ps.setString(2, hosp.getRG());
+        ps.setString(3, hosp.getCPF());
+        ps.setString(4, hosp.getTelefone());
+        ps.setString(5, hosp.getEmail());
+        ps.setDate(6, hosp.getDataNascimento());
+        ps.setString(7, hosp.getLogradouro());
+        ps.setString(8, hosp.getNumero());
+        ps.setString(9, hosp.getBairro());
+        ps.setString(10, hosp.getCidade());
+        ps.setInt(11, hosp.getCEP());
+        ps.setString(12, hosp.getEstado());
+        ps.setBoolean(13, true);
+        ps.setInt(14, usuarioLogado.getId());
+        ps.setInt(15, hosp.getID());
+        ps.executeUpdate();
+        conn.close();
+        ps.close();
+        
     }
 
     @Override
@@ -94,7 +116,6 @@ public class HospedeDao implements DaoGenerico<Hospede>{
             h.setCEP(rs.getInt("cep"));
             h.setEstado(rs.getString("estado"));
             h.setStatus(rs.getString("status"));
-           // System.out.println(h.getCPF());
             lHospede.add(h);
             
         }
@@ -135,6 +156,9 @@ public class HospedeDao implements DaoGenerico<Hospede>{
             h.setEstado(rs.getString("estado"));
             h.setStatus(rs.getString("status"));
         }
+        rs.close();
+        conn.close();
+        ps.close();
         return h;
     }
     
