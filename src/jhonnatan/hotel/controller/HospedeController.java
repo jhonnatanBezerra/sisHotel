@@ -8,6 +8,7 @@ package jhonnatan.hotel.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -52,7 +54,13 @@ public class HospedeController implements Initializable {
     private TableColumn<Hospede, String> clmData;
     @FXML
     private TableColumn<Hospede, String> clmEmail;
+    
     private Hospede hospSelecionado;
+    
+    private ObservableList<Hospede> listaDeHospedes = FXCollections.observableArrayList();
+    
+    @FXML
+    private TextField txtConsulta;
 
     /**
      * Initializes the controller class.
@@ -72,19 +80,8 @@ public class HospedeController implements Initializable {
 
     @FXML
     private void btVoltaPrincipal(ActionEvent event) {
-        
-        try {
-            BorderPane principal;
-            principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/PrincipalFXML.fxml"));
-            Scene cena = new Scene(principal);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(cena);
-            stage.show();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+        PrincipalController root = new PrincipalController();
+        root.abrePrincipal(event);
     }
 
     @FXML
@@ -120,12 +117,13 @@ public class HospedeController implements Initializable {
         
         try {
             HospedeDao hDao = new HospedeDao();
-            return FXCollections.observableArrayList(hDao.listar());
+            listaDeHospedes = FXCollections.observableArrayList(hDao.listar());
+            return listaDeHospedes ;
             
         } catch (SQLException ex) {
             Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return null; 
     }
 
     @FXML
@@ -182,4 +180,19 @@ public class HospedeController implements Initializable {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
+
+    @FXML
+    private void procurarHospede(ActionEvent event) {
+        tabelaHospede.setItems(buscar());
+    }
+    
+    private ObservableList<Hospede> buscar(){
+     ObservableList<Hospede> hospedePesquisa = FXCollections.observableArrayList();
+     for(int x = 0 ; x < listaDeHospedes.size() ; x++){
+         if(listaDeHospedes.get(x).getNome().toLowerCase().contains(txtConsulta.getText().toLowerCase())){
+             hospedePesquisa.add(listaDeHospedes.get(x));
+         }
+     }
+     return hospedePesquisa;
+    }
 }
