@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.HospedagemCadastroController">
+   <left>
+      <Pane minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutY="80.0" mnemonicParsing="false" text="Pesquisar" />
+         </children>
+      </Pane>
+   </right>
+   <bottom>
+      <Pane prefHeight="28.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField promptText="Buscar Hospede">
+               <VBox.margin>
+                  <Insets bottom="15.0" right="10.0" top="80.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="37.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="comboAP" onAction="#pegaAP" prefHeight="25.0" prefWidth="109.0" promptText="N° Ap.">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Label>
+                     <HBox.margin>
+                        <Insets left="-0.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="Acompanhante">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField promptText="Quantidade de Acompanhantes">
+               <VBox.margin>
+                  <Insets bottom="15.0" right="10.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#cancelaHospedagem" text="Cencela">
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="OK">
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
