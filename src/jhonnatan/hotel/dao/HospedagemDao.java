@@ -6,13 +6,18 @@
 package jhonnatan.hotel.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.converter.LocalDateStringConverter;
 import jhonnatan.hotel.jdbc.ConnectionFactory;
 import jhonnatan.hotel.model.Hospedagem;
 import jhonnatan.hotel.model.Hospede;
@@ -33,16 +38,19 @@ public class HospedagemDao implements DaoGenerico<Hospedagem>{
     @Override
     public void salvar(Hospedagem h) throws SQLException{
         
-        String sql = "INSERT INTO hospedagem (idHospede, idUsuario, numeroAP, acompanhantes,  status) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO hospedagem (idHospede, idUsuario, numeroAP, acompanhantes, dataEntrada,  status) VALUES (?, ?, ?, ?, ?, ?)";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
         ps.setInt(1, h.getHospede().getID());
         ps.setInt(2, usuarioLogado.getId());
         ps.setString(3, h.getNumeroAP());
         ps.setString(4, h.getQtdAcompanhante());
-        ps.setBoolean(5, true);
+        LocalDate now = LocalDate.now();
+        ps.setDate(5, java.sql.Date.valueOf(now));
+        ps.setBoolean(6, true);
         
     }
+                        
 
     @Override
     public void atualizar(Hospedagem obj) throws SQLException {
@@ -73,37 +81,8 @@ public class HospedagemDao implements DaoGenerico<Hospedagem>{
         }
         return lHospedagem;
     }
-    
-//    public Hospede  buscar(Integer id) throws SQLException{
-//        Hospede h = null;
-//        String sql = "SELECT * FROM hospede WHERE id = ?";
-//        conn = ConnectionFactory.getConnection();
-//        try {
-//            ps = conn.prepareStatement(sql);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        ps.setInt(1, id);
-//        ResultSet rs = ps.executeQuery();
-//        
-//        while(rs.next()){
-//            h = new Hospede();
-//            h.setID(rs.getInt("id"));
-//            h.setNome(rs.getString("nome"));
-//            h.setRG(rs.getString("rg"));
-//            h.setCPF(rs.getString("cpf"));
-//            h.setTelefone(rs.getString("telefone"));
-//            h.setEmail(rs.getString("email"));
-//            h.setDataNascimento(rs.getDate("dataNascimento"));
-//            h.setLogradouro(rs.getString("logradouro"));
-//            h.setNumero(rs.getString("numero"));
-//            h.setBairro(rs.getString("bairro"));
-//            h.setCidade(rs.getString("cidade"));
-//            h.setCEP(rs.getInt("cep"));
-//            h.setEstado(rs.getString("estado"));
-//            h.setStatus(rs.getString("status"));
-//        }
-//        return h;
-//    }
+
+   
+   
     
 }

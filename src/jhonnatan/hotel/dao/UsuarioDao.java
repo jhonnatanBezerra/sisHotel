@@ -69,8 +69,12 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
             usuarioNovo.setEmail(rs.getString("email"));
             
             return usuarioNovo;
+            
         }
+        rs.close();
+        conn.close();
+        ps.close();
         return null;
     }
-    
+
 }

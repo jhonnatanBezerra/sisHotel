@@ -18,4 +18,5 @@ public interface DaoGenerico<T> {
     void atualizar (T obj) throws SQLException;
     void deletar (T obj) throws SQLException;
     List<T> listar() throws SQLException;
+    
 }
