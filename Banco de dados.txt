@@ -75,5 +75,27 @@ ADD CONSTRAINT `usuario`
 ALTER TABLE `hotel`.`hospedagem` 
 ADD COLUMN `status` TINYINT NOT NULL DEFAULT 1 AFTER `idReserva`;
 
-  
+ALTER TABLE `hotel`.`hospedagem` 
+ADD COLUMN `dataEntrada` DATE NOT NULL AFTER `status`;
+
+INSERT INTO `hotel`.`hospedagem` (`id`, `idHospede`, `idUsuario`, `numeroAP`, `acompanhantes`, `status`, `dataEntrada`) VALUES ('1', '1', '1', '210', '0', '1', '2019-12-01');
+
+
+CREATE TABLE `hotel`.`apartamento` (
+  `id` INT NOT NULL,
+  `numeroAP` VARCHAR(45) NULL,
+  `andar` VARCHAR(45) NULL,
+  `idHospedagem` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `hospedagem_idx` (`idHospedagem` ) ,
+  CONSTRAINT `hospedagem`
+    FOREIGN KEY (`idHospedagem`)
+    REFERENCES `hotel`.`hospedagem` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+
+
+
 
