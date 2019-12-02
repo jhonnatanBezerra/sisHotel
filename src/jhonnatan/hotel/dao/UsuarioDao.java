@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import jhonnatan.hotel.jdbc.ConnectionFactory;
@@ -39,7 +40,7 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
     }
 
     @Override
-    public void atualizar(Usuario obj) throws SQLException {
+    public void atualizar(Usuario user) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -50,7 +51,20 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
 
     @Override
     public List<Usuario> listar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Usuario> lUsuario = new ArrayList<>();
+        Usuario u = null ;
+        String sql = "SELECT * FROM usuario";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            u = new Usuario();
+            u.setNome(rs.getString("nome"));
+            u.setEmail(rs.getString("email"));
+            u.setSenha(rs.getString("senha"));
+            u.setAtivo(rs.getBoolean("ativo"));
+        }
+        return lUsuario;
     }
     
     
@@ -75,6 +89,23 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
         conn.close();
         ps.close();
         return null;
+    }
+    
+    public Usuario buscar (Integer id)throws SQLException{
+        Usuario user = null;
+        String sql =  "SELECT * FROM usuario WHERE id = ?";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        
+        while(rs.next()){
+            user = new Usuario();
+            user.setId(rs.getInt("id"));
+            user.setNome(rs.getString("nome"));
+            user.setEmail(rs.getString("email"));
+        }
+        return user;
     }
 
 }
