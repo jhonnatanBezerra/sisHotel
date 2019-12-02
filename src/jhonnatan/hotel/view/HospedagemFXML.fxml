@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.HospedagemController">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="btNovo" mnemonicParsing="false" onAction="#btNovaHospedagem" prefHeight="68.0" prefWidth="90.0" style="-: center;" styleClass="btHospedagem" text="Nova Hosp.">
+               <VBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="15.0" layoutY="108.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btAlterar" text="Editar Hosp.">
+               <VBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="15.0" layoutY="108.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btExcluir" text="Apagar Hosp.">
+               <VBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="btTeste" layoutX="15.0" layoutY="25.0" mnemonicParsing="false" onAction="#btVoltaPrincipal" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btSair" text="Voltar">
+               <VBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+         </children></VBox>
+   </left>
+   <center>
+      <TableView fx:id="tabelaHospedagem" prefHeight="405.0" prefWidth="490.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="clmID" prefWidth="35.0" text="ID" />
+          <TableColumn fx:id="clmHospede" prefWidth="183.0" text="Hospede" />
+            <TableColumn fx:id="clmAP" prefWidth="59.0" text="AP" />
+            <TableColumn fx:id="clmAcompanhantes" prefWidth="102.0" text="Acompanhantes" />
+            <TableColumn fx:id="clmData" prefWidth="102.0" text="Data de Entrada" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <Pane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <HBox prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField prefHeight="25.0" prefWidth="234.0">
+               <HBox.margin>
+                  <Insets left="150.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" styleClass="btBusca" text="Buscar">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <Pane prefHeight="405.0" prefWidth="78.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
