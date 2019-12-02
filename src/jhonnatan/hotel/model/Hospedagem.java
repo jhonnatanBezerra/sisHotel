@@ -5,6 +5,10 @@
  */
 package jhonnatan.hotel.model;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Admin
@@ -16,6 +20,7 @@ public class Hospedagem {
     private String qtdAcompanhante;
     private Integer idReserva;
     private Boolean status;
+    private Date dataEntrada;
 
     public Hospede getHospede() {
         return hospede;
@@ -64,6 +69,16 @@ public class Hospedagem {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    public Date getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(Date dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+    
+    
     
     
 }
