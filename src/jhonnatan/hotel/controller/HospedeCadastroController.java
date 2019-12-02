@@ -91,7 +91,7 @@ public class HospedeCadastroController implements Initializable {
             hospede.setCEP(Integer.parseInt(txtCEP.getText()));
             hospede.setEstado(txtEstado.getText());
             hospede.setStatus("1");
-           
+           //Nao passado o id do usuario pois o mesmo esta pegando direto do salvar no HospedeDao
 
             
             HospedeDao hosDao = new HospedeDao();
