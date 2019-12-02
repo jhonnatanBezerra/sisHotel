@@ -78,8 +78,6 @@ ADD COLUMN `status` TINYINT NOT NULL DEFAULT 1 AFTER `idReserva`;
 ALTER TABLE `hotel`.`hospedagem` 
 ADD COLUMN `dataEntrada` DATE NOT NULL AFTER `status`;
 
-INSERT INTO `hotel`.`hospedagem` (`id`, `idHospede`, `idUsuario`, `numeroAP`, `acompanhantes`, `status`, `dataEntrada`) VALUES ('1', '1', '1', '210', '0', '1', '2019-12-01');
-
 
 CREATE TABLE `hotel`.`apartamento` (
   `id` INT NOT NULL,
@@ -93,6 +91,57 @@ CREATE TABLE `hotel`.`apartamento` (
     REFERENCES `hotel`.`hospedagem` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+ALTER TABLE `hotel`.`hospedagem` 
+DROP FOREIGN KEY `usuario`;
+ALTER TABLE `hotel`.`hospedagem` 
+ADD INDEX `apartamento_idx` (`numeroAP` ASC) VISIBLE,
+ADD INDEX `usuario_idx` (`idUsuario` ASC) VISIBLE,
+DROP INDEX `usuario_idx` ;
+;
+ALTER TABLE `hotel`.`hospedagem` 
+ADD CONSTRAINT `usuario`
+  FOREIGN KEY (`idUsuario`)
+  REFERENCES `hotel`.`usuario` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `apartamento`
+  FOREIGN KEY (`numeroAP`)
+  REFERENCES `hotel`.`apartamento` (`numeroAP`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `hotel`.`hospedagem` 
+CHANGE COLUMN `numeroAP` `apartamento` VARCHAR(45) NOT NULL ;
+
+ALTER TABLE `hotel`.`apartamento` 
+CHANGE COLUMN `numeroAP` `numeroAP` VARCHAR(45) NOT NULL ,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`numeroAP`);
+;
+
+ALTER TABLE `hotel`.`hospedagem` 
+ADD CONSTRAINT `usuario`
+  FOREIGN KEY (`idUsuario`)
+  REFERENCES `hotel`.`usuario` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `hotel`.`apartamento` 
+DROP FOREIGN KEY `hospedagem`;
+ALTER TABLE `hotel`.`apartamento` 
+DROP COLUMN `idHospedagem`,
+DROP INDEX `hospedagem_idx` ;
+;
+
+ALTER TABLE `hotel`.`hospedagem` 
+ADD CONSTRAINT `apartamento`
+  FOREIGN KEY (`apartamento`)
+  REFERENCES `hotel`.`apartamento` (`numeroAP`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 
 
 
