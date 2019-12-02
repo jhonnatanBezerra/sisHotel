@@ -11,11 +11,18 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Cadastro">
+          <Menu mnemonicParsing="false" text="Cadastros">
             <items>
-              <MenuItem mnemonicParsing="false" text="Hospede" />
-                  <MenuItem mnemonicParsing="false" text="Funcionario" />
-                  <MenuItem mnemonicParsing="false" text="Reserva" />
+                  <Menu mnemonicParsing="false" text="Hospede">
+                    <items>
+                    <MenuItem mnemonicParsing="false" text="Novo Hospede" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Reserva">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Nova Reserva" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Relatorios">
@@ -24,11 +31,17 @@
                   <MenuItem mnemonicParsing="false" text="Reservas" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Sair">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
+            <Menu mnemonicParsing="false" text="Manutenção">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Novo Apartamento" />
+                  <MenuItem mnemonicParsing="false" text="Novo Usuario" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Sair">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Logout" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
