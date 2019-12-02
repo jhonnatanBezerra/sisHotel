@@ -14,13 +14,24 @@ import java.text.SimpleDateFormat;
  * @author Admin
  */
 public class Hospedagem {
+    private Integer id;
     private Hospede hospede;
     private Usuario usuario;
-    private String numeroAP;
+    private Apartamento numeroAP;
     private String qtdAcompanhante;
     private Integer idReserva;
     private Boolean status;
     private Date dataEntrada;
+    
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 
     public Hospede getHospede() {
         return hospede;
@@ -38,13 +49,15 @@ public class Hospedagem {
         this.usuario = usuario;
     }
 
-    public String getNumeroAP() {
+    public Apartamento getNumeroAP() {
         return numeroAP;
     }
 
-    public void setNumeroAP(String numeroAP) {
+    public void setNumeroAP(Apartamento numeroAP) {
         this.numeroAP = numeroAP;
     }
+    
+    
 
     public String getQtdAcompanhante() {
         return qtdAcompanhante;
