@@ -7,6 +7,7 @@ package jhonnatan.hotel.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,8 @@ public class PrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         usuarioLogado = Session.getUsuario();
         lblUsuario.setText("Usuario: "+usuarioLogado.getId());
+         LocalDate now = LocalDate.now();
+        System.out.println(now);
         
     }    
 
@@ -72,6 +75,34 @@ public class PrincipalController implements Initializable {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
             
+    }
+
+    @FXML
+    private void btHospedagem(ActionEvent event) {
+        BorderPane hospedagem;
+        try {
+            hospedagem = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedagemFXML.fxml"));
+            Scene cena = new Scene(hospedagem);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void abrePrincipal(ActionEvent event){
+        BorderPane principal; 
+        try {
+            principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/PrincipalFXML.fxml"));
+            Scene cena = new Scene(principal);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }
