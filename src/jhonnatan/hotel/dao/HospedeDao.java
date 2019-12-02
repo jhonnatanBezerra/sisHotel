@@ -97,12 +97,15 @@ public class HospedeDao implements DaoGenerico<Hospede>{
     @Override
     public List<Hospede> listar() throws SQLException {
         List<Hospede> lHospede = new ArrayList<>();
+        UsuarioDao userDao = null;
+        Hospede h = null;
         String sql = "SELECT * FROM hospede WHERE status = '1'";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
-            Hospede h = new Hospede();
+            h = new Hospede();
+            userDao = new UsuarioDao();
             h.setID(rs.getInt("id"));
             h.setNome(rs.getString("nome"));
             h.setRG(rs.getString("rg"));
@@ -110,6 +113,7 @@ public class HospedeDao implements DaoGenerico<Hospede>{
             h.setTelefone(rs.getString("telefone"));
             h.setEmail(rs.getString("email"));
             h.setDataNascimento(rs.getDate("dataNascimento"));
+            h.setFuncionario(userDao.buscar(rs.getInt("usuario")));
             h.setLogradouro(rs.getString("logradouro"));
             h.setNumero(rs.getString("numero"));
             h.setBairro(rs.getString("bairro"));
@@ -130,18 +134,17 @@ public class HospedeDao implements DaoGenerico<Hospede>{
     
     public Hospede  buscar(Integer id) throws SQLException{
         Hospede h = null;
+        UsuarioDao user = null;
         String sql = "SELECT * FROM hospede WHERE id = ?";
         conn = ConnectionFactory.getConnection();
-        try {
-            ps = conn.prepareStatement(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ps = conn.prepareStatement(sql);
+        
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         
         while(rs.next()){
             h = new Hospede();
+            user = new UsuarioDao();
             h.setID(rs.getInt("id"));
             h.setNome(rs.getString("nome"));
             h.setRG(rs.getString("rg"));
@@ -154,6 +157,7 @@ public class HospedeDao implements DaoGenerico<Hospede>{
             h.setBairro(rs.getString("bairro"));
             h.setCidade(rs.getString("cidade"));
             h.setCEP(rs.getInt("cep"));
+            h.setFuncionario(user.buscar(rs.getInt("usuario")));
             h.setEstado(rs.getString("estado"));
             h.setStatus(rs.getString("status"));
         }
