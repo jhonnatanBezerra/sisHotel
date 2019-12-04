@@ -41,12 +41,27 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
 
     @Override
     public void atualizar(Usuario user) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ?";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, user.getNome());
+        ps.setString(2, user.getEmail());
+        ps.setString(3, user.getSenha());
+        ps.setInt(4, user.getId());
+        ps.executeUpdate();
+        conn.close();
+        ps.close();
     }
 
     @Override
     public void deletar(Usuario user) throws SQLException {
-       
+       String sql = "DELETE FROM usuario WHERE id = ?";
+       conn = ConnectionFactory.getConnection();
+       ps = conn.prepareStatement(sql);
+       ps.setInt(1, user.getId());
+       ps.execute();
+       ps.close();
+       conn.close();
     }
 
     @Override
@@ -59,10 +74,12 @@ public class UsuarioDao implements DaoGenerico<Usuario>{
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             u = new Usuario();
+            u.setId(rs.getInt("id"));
             u.setNome(rs.getString("nome"));
             u.setEmail(rs.getString("email"));
             u.setSenha(rs.getString("senha"));
             u.setAtivo(rs.getBoolean("ativo"));
+            lUsuario.add(u);
         }
         return lUsuario;
     }
