@@ -18,6 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -35,6 +37,8 @@ public class PrincipalController implements Initializable {
     
     @FXML
     private Label lblUsuario;
+    @FXML
+    private MenuBar menuBar;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -103,6 +107,35 @@ public class PrincipalController implements Initializable {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+
+    @FXML
+    private void abreUsuario(ActionEvent event) {
+        AnchorPane paneUsuario = new AnchorPane();
+        try {
+            paneUsuario = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/UsuarioFXML.fxml"));
+            Scene cena = new Scene(paneUsuario);
+            Stage stage = new Stage();
+            stage.setScene(cena);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void abreApartamento(ActionEvent event) {
+        AnchorPane paneAP = new AnchorPane();
+        try{
+            paneAP = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/ApartamentosFXML.fxml"));
+            Scene cena = new Scene(paneAP);
+            Stage stage = new Stage();
+            stage.setScene(cena);
+            stage.show();
+        } catch(IOException ex){
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
