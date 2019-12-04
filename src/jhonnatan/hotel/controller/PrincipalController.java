@@ -137,5 +137,11 @@ public class PrincipalController implements Initializable {
             Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void fechaSistema(ActionEvent event) {
+        System.exit(0);
+    }
+    
     
 }
