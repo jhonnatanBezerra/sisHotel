@@ -44,8 +44,8 @@ public class PrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         usuarioLogado = Session.getUsuario();
         lblUsuario.setText("Usuario: "+usuarioLogado.getId());
-         LocalDate now = LocalDate.now();
-        System.out.println(now);
+        LocalDate now = LocalDate.now();
+        
         
     }    
 
