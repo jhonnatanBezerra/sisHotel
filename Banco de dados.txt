@@ -1,3 +1,5 @@
+CREATE SCHEMA `hotel` ;
+
 CREATE TABLE `hotel`.`usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
@@ -96,21 +98,11 @@ CREATE TABLE `hotel`.`apartamento` (
 ALTER TABLE `hotel`.`hospedagem` 
 DROP FOREIGN KEY `usuario`;
 ALTER TABLE `hotel`.`hospedagem` 
-ADD INDEX `apartamento_idx` (`numeroAP` ASC) VISIBLE,
-ADD INDEX `usuario_idx` (`idUsuario` ASC) VISIBLE,
+ADD INDEX `apartamento_idx` (`numeroAP` ASC) ,
+ADD INDEX `usuario_idx` (`idUsuario` ASC) ,
 DROP INDEX `usuario_idx` ;
 ;
-ALTER TABLE `hotel`.`hospedagem` 
-ADD CONSTRAINT `usuario`
-  FOREIGN KEY (`idUsuario`)
-  REFERENCES `hotel`.`usuario` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION,
-ADD CONSTRAINT `apartamento`
-  FOREIGN KEY (`numeroAP`)
-  REFERENCES `hotel`.`apartamento` (`numeroAP`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+
 
 ALTER TABLE `hotel`.`hospedagem` 
 CHANGE COLUMN `numeroAP` `apartamento` VARCHAR(45) NOT NULL ;
