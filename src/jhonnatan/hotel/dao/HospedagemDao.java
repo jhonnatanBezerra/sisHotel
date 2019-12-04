@@ -37,7 +37,7 @@ public class HospedagemDao implements DaoGenerico<Hospedagem>{
         ps = conn.prepareStatement(sql);
         ps.setInt(1, h.getHospede().getID());
         ps.setInt(2, usuarioLogado.getId());
-        ps.setString(3, h.getNumeroAP().getNumero());
+        ps.setString(3, h.getNumeroAP().getNumeroAP());
         ps.setString(4, h.getQtdAcompanhante());
         LocalDate now = LocalDate.now();
         ps.setDate(5, java.sql.Date.valueOf(now));
