@@ -86,7 +86,7 @@ public class ApartamentosController implements Initializable {
     @FXML
     private void editaAP(ActionEvent event) {
         ApartamentosEditarController.setEditAP(apSelecionado);
-        System.out.println("Editar: "+apSelecionado.getNumeroAP());
+        
         if(apSelecionado != null){
            try {
                 VBox editaAP;
@@ -144,9 +144,11 @@ public class ApartamentosController implements Initializable {
     
     private ObservableList<Apartamento> buscar(){
         ObservableList<Apartamento> apPesquisa = FXCollections.observableArrayList();
+        
         for(int x = 0; x < listaAP.size(); x++){
-            if(listaAP.get(x).getNumeroAP().contains(txtBusca.getText()));
+            if(listaAP.get(x).getNumeroAP().contains(txtBusca.getText())){
             apPesquisa.add(listaAP.get(x));
+            }
         }
         return apPesquisa;
     }
