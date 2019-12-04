@@ -23,11 +23,11 @@ public class Apartamento {
         this.id = id;
     }
 
-    public String getNumero() {
+    public String getNumeroAP() {
         return numeroAP;
     }
 
-    public void setNumero(String numero) {
+    public void setNumeroAP(String numero) {
         this.numeroAP = numero;
     }
 
