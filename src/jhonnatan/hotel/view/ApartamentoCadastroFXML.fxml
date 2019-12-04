@@ -1,44 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.UsuarioCadastroController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.ApartamentoCadastroController">
    <children>
-      <Label layoutX="10.0" layoutY="35.0" text="Nome de Usuario">
+      <Label layoutX="10.0" layoutY="35.0" text="Numero do AP">
          <VBox.margin>
             <Insets left="25.0" />
          </VBox.margin>
       </Label>
-      <TextField fx:id="txtNome" layoutX="10.0" layoutY="10.0" promptText="Digite um nome de Usuario">
+      <TextField fx:id="txtNumero" layoutX="10.0" layoutY="10.0" promptText="Digite um numero para o AP">
          <VBox.margin>
             <Insets left="15.0" right="100.0" />
          </VBox.margin>
       </TextField>
-      <Label layoutX="10.0" layoutY="35.0" text="E-mail">
+      <Label layoutX="10.0" layoutY="35.0" text="Andar">
          <VBox.margin>
             <Insets left="25.0" />
          </VBox.margin>
       </Label>
-      <TextField fx:id="txtEmail" promptText="Digite seu E-mail">
+      <TextField fx:id="txtAndar" promptText="Informe o andar do AP">
          <VBox.margin>
             <Insets left="15.0" right="100.0" />
          </VBox.margin>
       </TextField>
-      <Label text="Senha">
-         <VBox.margin>
-            <Insets left="25.0" />
-         </VBox.margin>
-      </Label>
-      <PasswordField fx:id="txtSenha" promptText="Crie sua senha">
-         <VBox.margin>
-            <Insets left="15.0" right="100.0" />
-         </VBox.margin>
-      </PasswordField>
       <Button fx:id="btCancela" mnemonicParsing="false" onAction="#btCancelaCadastro" text="Cencelar">
          <VBox.margin>
             <Insets left="25.0" top="15.0" />
