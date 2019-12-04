@@ -39,7 +39,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Sair">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#fechaSistema" text="Logout" />
                </items>
             </Menu>
         </menus>
