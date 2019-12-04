@@ -21,12 +21,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import jhonnatan.hotel.dao.UsuarioDao;
 import jhonnatan.hotel.model.Usuario;
 
@@ -51,6 +54,10 @@ public class UsuarioController implements Initializable {
     private Usuario usuarioSelecionado;
     
     private ObservableList<Usuario> listaUsuario = FXCollections.observableArrayList();
+    @FXML
+    private Button btCancela;
+    @FXML
+    private Button btExcluir;
     
     /**
      * Initializes the controller class.
@@ -70,8 +77,8 @@ public class UsuarioController implements Initializable {
 
     @FXML
     private void btVoltaPrincipal(ActionEvent event) {
-        PrincipalController root = new PrincipalController();
-        root.abrePrincipal(event);
+        Stage stage = (Stage)btCancela.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -99,6 +106,16 @@ public class UsuarioController implements Initializable {
 
     @FXML
     private void btNovoUser(ActionEvent event) {
+        VBox cadastroUser = new VBox();
+        try {
+            cadastroUser = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/UsuarioCadastroFXML.fxml"));
+            Scene cena = new Scene(cadastroUser);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void initTabelaUsuarios(){
@@ -127,6 +144,43 @@ public class UsuarioController implements Initializable {
             }
         }
         return usuarioPesquisa;
+    }
+    
+    public void abreUsuarioListar(ActionEvent event){
+        
+        AnchorPane paneUsuarioLista = new AnchorPane();
+        try {
+            paneUsuarioLista = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/UsuarioFXML.fxml"));
+            Scene cena = new Scene(paneUsuarioLista);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(cena);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(UsuarioEditarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void btExcluirUser(ActionEvent event) {
+        if(usuarioSelecionado != null){
+            try {
+                UsuarioDao udao = new UsuarioDao();
+                int res = JOptionPane.showConfirmDialog(null, "Deseja excluir o Usuario: "+usuarioSelecionado.getNome(),"Excluir",JOptionPane.YES_NO_OPTION);
+                if(res == 0){
+                    udao.deletar(usuarioSelecionado);
+                    initTabelaUsuarios();
+                }else{
+                    System.out.println("Nao deleta");
+                    initTabelaUsuarios();
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(HospedeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um Hospede para deletar");
+        }
     }
     
 }
