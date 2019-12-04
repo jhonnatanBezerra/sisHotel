@@ -9,7 +9,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.PrincipalController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Cadastros">
             <items>
@@ -33,8 +33,8 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Manutenção">
               <items>
-                <MenuItem mnemonicParsing="false" text="Novo Apartamento" />
-                  <MenuItem mnemonicParsing="false" text="Novo Usuario" />
+                <MenuItem mnemonicParsing="false" onAction="#abreApartamento" text="Apartamento" />
+                  <MenuItem mnemonicParsing="false" onAction="#abreUsuario" text="Usuario" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sair">
