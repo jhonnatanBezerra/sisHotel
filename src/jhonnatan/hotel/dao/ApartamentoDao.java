@@ -28,35 +28,53 @@ public class ApartamentoDao implements DaoGenerico<Apartamento>{
         String sql = "INSERT INTO apartamento (numeroAP, andar) values(?, ?)";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
-        ps.setString(1, ap.getNumero());
+        ps.setString(1, ap.getNumeroAP());
         ps.setString(2, ap.getAndar());
         ps.executeUpdate();
+        conn.close();
+        ps.close();
     }
 
     @Override
     public void atualizar(Apartamento ap) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE apartamento SET numeroAP = ?, andar = ? WHERE id = ?";
+        conn = ConnectionFactory.getConnection();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, ap.getNumeroAP());
+        ps.setString(2, ap.getAndar());
+        ps.setInt(3, ap.getId());
+        ps.executeUpdate();
+        conn.close();
+        ps.close();
+        
     }
 
     @Override
     public void deletar(Apartamento ap) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM apartamento WHERE id = ?";
+        conn = ConnectionFactory.getConnection();
+       ps = conn.prepareStatement(sql);
+       ps.setInt(1, ap.getId());
+       ps.execute();
+       ps.close();
+       conn.close();
     }
 
     @Override
     public List<Apartamento> listar() throws SQLException {
         List<Apartamento> lApartamento = new ArrayList<>();
-        HospedagemDao hospgemDao = null;
-        String sql = "Select * from apartamento";
+        Apartamento ap = null;
+        String sql = "SELECT * FROM apartamento";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
-            hospgemDao = new HospedagemDao();
-            Apartamento ap = new Apartamento();
+     
+            ap = new Apartamento();
             ap.setId(rs.getInt("id"));
-            ap.setNumero(rs.getString("numeroAP"));
+            ap.setNumeroAP(rs.getString("numeroAP"));
             ap.setAndar(rs.getString("andar"));
+            lApartamento.add(ap);
         }
         return lApartamento;
     }
@@ -71,7 +89,7 @@ public class ApartamentoDao implements DaoGenerico<Apartamento>{
         while(rs.next()){
             ap = new Apartamento();
             ap.setId(rs.getInt("id"));
-            ap.setNumero(rs.getString("numeroAP"));
+            ap.setNumeroAP(rs.getString("numeroAP"));
             ap.setAndar(rs.getString("andar"));
         }
         return ap;
