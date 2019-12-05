@@ -71,7 +71,6 @@ public class ApartamentosController implements Initializable {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 apSelecionado = (Apartamento) newValue;
-                System.out.println("Apartamento selecionado numero: "+apSelecionado.getNumeroAP());
                 
             }
         });
@@ -131,7 +130,7 @@ public class ApartamentosController implements Initializable {
         tabelaAP.setItems(attTabelaAP());
     }
     
-    private ObservableList<Apartamento> attTabelaAP(){
+    public ObservableList<Apartamento> attTabelaAP(){
         ApartamentoDao apdao = new ApartamentoDao();
         try {
             listaAP = FXCollections.observableArrayList(apdao.listar());
@@ -185,10 +184,4 @@ public class ApartamentosController implements Initializable {
         }
     }
     
-    
-    
 }
-
-    
-    
-

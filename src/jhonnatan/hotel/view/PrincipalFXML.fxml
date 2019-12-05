@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.PrincipalController">
+<BorderPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.PrincipalController">
    <top>
       <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
         <menus>
@@ -48,46 +48,26 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="25.0" layoutY="108.0" mnemonicParsing="false" onAction="#btHospedagem" prefHeight="68.0" prefWidth="90.0" styleClass="btHospedagem" stylesheets="@css/principal.css">
+            <Button layoutX="25.0" layoutY="108.0" mnemonicParsing="false" onAction="#btHospedagem" prefHeight="68.0" prefWidth="90.0" text="Hospedagens">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Label layoutX="35.0" layoutY="172.0" text="Hospedagem">
-               <VBox.margin>
-                  <Insets left="15.0" />
-               </VBox.margin>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#abreHospede" prefHeight="68.0" prefWidth="90.0" styleClass="btHospedes" stylesheets="@css/principal.css">
-               <VBox.margin>
-                  <Insets left="5.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Label text="Hospedes">
-               <VBox.margin>
-                  <Insets left="25.0" />
-               </VBox.margin>
-            </Label>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="90.0" styleClass="btReserva" stylesheets="@css/principal.css">
-               <VBox.margin>
-                  <Insets left="5.0" top="5.0" />
-               </VBox.margin>
-            </Button>
-            <Label layoutX="35.0" layoutY="184.0" text="Reservas">
-               <VBox.margin>
-                  <Insets left="25.0" />
-               </VBox.margin>
-            </Label>
-            <Button layoutX="15.0" layoutY="191.0" mnemonicParsing="false" onAction="#sairDaAplicacao" prefHeight="67.0" prefWidth="90.0" styleClass="btSair" stylesheets="@css/principal.css">
+            <Button mnemonicParsing="false" onAction="#abreHospede" prefHeight="68.0" prefWidth="90.0" text="Hospedes">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Label layoutX="35.0" layoutY="259.0" text="Sair">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="90.0" text="Reservas">
                <VBox.margin>
-                  <Insets left="40.0" />
+                  <Insets left="5.0" top="15.0" />
                </VBox.margin>
-            </Label>
+            </Button>
+            <Button layoutX="15.0" layoutY="191.0" mnemonicParsing="false" onAction="#sairDaAplicacao" prefHeight="67.0" prefWidth="90.0" text="Sair">
+               <VBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </left>

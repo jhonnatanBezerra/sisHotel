@@ -39,9 +39,12 @@ public class PrincipalController implements Initializable {
     private Label lblUsuario;
     @FXML
     private MenuBar menuBar;
+    @FXML
+    private BorderPane panePrincipal;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         usuarioLogado = Session.getUsuario();
         lblUsuario.setText("Usuario: "+usuarioLogado.getId());
         LocalDate now = LocalDate.now();
@@ -56,7 +59,7 @@ public class PrincipalController implements Initializable {
             BorderPane principal;
             principal = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedeFXML.fxml"));
             Scene cena = new Scene(principal);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = new Stage();
             stage.setScene(cena);
             stage.show();
             
@@ -87,7 +90,7 @@ public class PrincipalController implements Initializable {
         try {
             hospedagem = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/HospedagemFXML.fxml"));
             Scene cena = new Scene(hospedagem);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage =  new Stage();//(Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(cena);
             stage.show();
         } catch (IOException ex) {

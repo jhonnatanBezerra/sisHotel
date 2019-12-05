@@ -28,7 +28,7 @@ public class ApartamentoDao implements DaoGenerico<Apartamento>{
         String sql = "INSERT INTO apartamento (numeroAP, andar) values(?, ?)";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
-        ps.setString(1, ap.getNumeroAP());
+        ps.setInt(1, ap.getId()); // salvando o id do apartamento
         ps.setString(2, ap.getAndar());
         ps.executeUpdate();
         conn.close();

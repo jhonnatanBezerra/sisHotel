@@ -27,7 +27,7 @@
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button id="btTeste" layoutX="15.0" layoutY="25.0" mnemonicParsing="false" onAction="#btVoltaPrincipal" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btSair" text="Voltar">
+            <Button id="btTeste" fx:id="btvolta" layoutX="15.0" layoutY="25.0" mnemonicParsing="false" onAction="#btVoltaPrincipal" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btSair" text="Sair">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
@@ -51,12 +51,12 @@
    <top>
       <HBox prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField prefHeight="25.0" prefWidth="234.0">
+            <TextField fx:id="txtBusca" prefHeight="25.0" prefWidth="234.0">
                <HBox.margin>
                   <Insets left="150.0" top="10.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" styleClass="btBusca" text="Buscar">
+            <Button mnemonicParsing="false" onAction="#btBuscar" prefHeight="25.0" prefWidth="62.0" styleClass="btBusca" text="Buscar">
                <HBox.margin>
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.PesquisaHospedeController">
+   <children>
+      <TableView fx:id="tabelaHospede" prefHeight="366.0" prefWidth="521.0">
+         <columns>
+            <TableColumn fx:id="clmID" prefWidth="35.0" text="ID" />
+            <TableColumn fx:id="clmNome" prefWidth="183.0" text="Nome" />
+            <TableColumn fx:id="clmCPF" prefWidth="198.0" text="CPF" />
+            <TableColumn fx:id="clmTelefone" prefWidth="198.0" text="Telefone" />
+            <TableColumn fx:id="clmData" prefWidth="198.0" text="Data Nascimento" />
+            <TableColumn fx:id="clmEmail" prefWidth="198.0" text="Email" />
+         </columns>
+      </TableView>
+      <Button mnemonicParsing="false" onAction="#btSelecionar" text="Selecionar" />
+   </children>
+</VBox>

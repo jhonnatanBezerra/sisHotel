@@ -39,5 +39,12 @@ public class Apartamento {
         this.andar = andar;
     }
 
+    @Override
+    public String toString() {
+        return getNumeroAP(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
     
 }

@@ -11,22 +11,22 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="btNovo" mnemonicParsing="false" onAction="#abreCadastroCliente" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btnovo" stylesheets="@css/hospede.css">
+            <Button mnemonicParsing="false" onAction="#abreCadastroCliente" prefHeight="68.0" prefWidth="90.0" text="Novo">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="15.0" layoutY="108.0" mnemonicParsing="false" onAction="#btAlterar" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btAlterar" stylesheets="@css/hospede.css">
+            <Button layoutX="15.0" layoutY="108.0" mnemonicParsing="false" onAction="#btAlterar" prefHeight="68.0" prefWidth="90.0" text="Editar">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="15.0" layoutY="108.0" mnemonicParsing="false" onAction="#btExcluir" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btExcluir" stylesheets="@css/hospede.css">
+            <Button layoutX="15.0" layoutY="108.0" mnemonicParsing="false" onAction="#btExcluir" prefHeight="68.0" prefWidth="90.0" text="Excluir">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button id="btTeste" layoutX="15.0" layoutY="25.0" mnemonicParsing="false" onAction="#btVoltaPrincipal" prefHeight="68.0" prefWidth="90.0" style="-fx-background-repeat: center;" styleClass="btSair" stylesheets="@css/hospede.css">
+            <Button fx:id="btVoltar" layoutX="15.0" layoutY="25.0" mnemonicParsing="false" onAction="#btVoltaPrincipal" prefHeight="68.0" prefWidth="90.0" text="Sair">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
@@ -56,7 +56,7 @@
                   <Insets left="150.0" top="10.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#procurarHospede" prefHeight="25.0" prefWidth="47.0" styleClass="btBusca" stylesheets="@css/hospede.css">
+            <Button mnemonicParsing="false" onAction="#procurarHospede" prefHeight="25.0" prefWidth="47.0">
                <HBox.margin>
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>

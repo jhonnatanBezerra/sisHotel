@@ -32,12 +32,12 @@ public class HospedagemDao implements DaoGenerico<Hospedagem>{
     public void salvar(Hospedagem h) throws SQLException{
         
         ApartamentoDao apDao = new ApartamentoDao();
-        String sql = "INSERT INTO hospedagem (idHospede, idUsuario, numeroAP, acompanhantes, dataEntrada,  status) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO hospedagem (idHospede, idUsuario, apartamento, acompanhantes, dataEntrada,  status) VALUES (?, ?, ?, ?, ?, ?)";
         conn = ConnectionFactory.getConnection();
         ps = conn.prepareStatement(sql);
         ps.setInt(1, h.getHospede().getID());
         ps.setInt(2, usuarioLogado.getId());
-        ps.setString(3, h.getNumeroAP().getNumeroAP());
+        ps.setInt(3, h.getNumeroAP().getId());
         ps.setString(4, h.getQtdAcompanhante());
         LocalDate now = LocalDate.now();
         ps.setDate(5, java.sql.Date.valueOf(now));
@@ -69,14 +69,21 @@ public class HospedagemDao implements DaoGenerico<Hospedagem>{
         ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
+            
             h = new Hospedagem();
             hDao = new HospedeDao();
+            userDao = new UsuarioDao();
+            apDao = new ApartamentoDao();
+            h.setId(rs.getInt("id"));
             h.setHospede(hDao.buscar(rs.getInt("idHospede")));
             h.setUsuario(userDao.buscar(rs.getInt("idUsuario")));
+            h.setDataEntrada(rs.getDate("dataEntrada"));
             h.setNumeroAP(apDao.buscar(rs.getInt("apartamento")));
             h.setQtdAcompanhante(rs.getString("acompanhantes"));
             h.setIdReserva(rs.getInt("idReserva"));
             h.setStatus(rs.getBoolean("status"));
+            
+            lHospedagem.add(h);
         }
         return lHospedagem;
     }

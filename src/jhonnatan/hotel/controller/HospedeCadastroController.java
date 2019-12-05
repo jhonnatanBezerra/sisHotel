@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 import jhonnatan.hotel.dao.HospedeDao;
 import jhonnatan.hotel.model.Hospede;
 import jhonnatan.hotel.model.Usuario;
@@ -61,9 +62,7 @@ public class HospedeCadastroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        usuarioLogado = Session.getUsuario();
-        System.out.println(Session.getUsuario().getId());
-        System.out.println(usuarioLogado);
-        System.out.println("O usuario logado no sistema possui a id: "+usuarioLogado.getId());
+        
     }    
 
     @FXML
@@ -75,7 +74,6 @@ public class HospedeCadastroController implements Initializable {
     @FXML
     private void cadastrarHospede(ActionEvent event)  {
         try {
-            
             
             Hospede hospede = new Hospede();
             hospede.setNome(txtNome.getText());
@@ -95,7 +93,8 @@ public class HospedeCadastroController implements Initializable {
 
             
             HospedeDao hosDao = new HospedeDao();
-            hosDao.salvar(hospede); 
+            hosDao.salvar(hospede);
+            JOptionPane.showMessageDialog(null, "Hospede "+hospede.getNome()+"Cadastrado");
             HospedeController root = new HospedeController();
             root.abreHospedeController(event);
               

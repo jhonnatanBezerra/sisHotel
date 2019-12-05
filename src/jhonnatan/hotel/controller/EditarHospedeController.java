@@ -63,7 +63,6 @@ public class EditarHospedeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(hospEdit.getNome());
         initTableUpdate();
     }    
 

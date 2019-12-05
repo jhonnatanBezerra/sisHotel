@@ -70,6 +70,8 @@ public class LoginController implements Initializable {
                     Scene cena = new Scene(principal);
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     stage.setScene(cena);
+                    stage.setTitle("Hotel Vegas - Principal");
+                    stage.setMaximized(true);
                     stage.show();
                 } catch (IOException ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);

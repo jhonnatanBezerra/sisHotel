@@ -30,13 +30,15 @@ public class Hotel extends Application{
     
     @Override
     public void start(Stage primaryStage) {
-        
-        try {
+       try {
             
             VBox root;
             root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
             Scene cena = new Scene(root);
             primaryStage.setScene(cena);
+            primaryStage.setTitle("Hotel Vegas");
+            primaryStage.setResizable(false);
+            
             primaryStage.show();
         } catch (IOException ex) {
             Logger.getLogger(Hotel.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,7 +50,7 @@ public class Hotel extends Application{
     
     public static void main(String[] args) throws SQLException {
         launch(args);
-       
+        
         
     }
 
