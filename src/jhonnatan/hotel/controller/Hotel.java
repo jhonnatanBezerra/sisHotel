@@ -1,58 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-
-    defeitos causam erros que PODEM GERAR falhas...
-
-*/
-
 package jhonnatan.hotel.controller;
 
-
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
+import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import jhonnatan.hotel.util.NewPreloader;
 
+public class Hotel extends Application {
 
-/**
- *
- * @author Jhonnatan
- */
-public class Hotel extends Application{
+  @Override
+  public void start(Stage stage) throws Exception {
+    Parent root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+   // stage.setMaximized(true);
+//    stage.initStyle(StageStyle.UNDECORATED);
+    stage.show();
+  }
 
-    
-    @Override
-    public void start(Stage primaryStage) {
-       try {
-            
-            VBox root;
-            root = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/LoginFXML.fxml"));
-            Scene cena = new Scene(root);
-            primaryStage.setScene(cena);
-            primaryStage.setTitle("Hotel Vegas");
-            primaryStage.setResizable(false);
-            
-            primaryStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(Hotel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+  @Override
+  public void init() throws Exception {
+    for (int i = 1; i <= 100; i++) {
+      double progress = (double) i / 10;
+      LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
+     Thread.sleep(20);
     }
-    
-    
-    
-    public static void main(String[] args) throws SQLException {
-        launch(args);
-        
-        
-    }
+  }
 
-   
+  public static void main(String[] args) {
+    LauncherImpl.launchApplication(Hotel.class, NewPreloader.class, args);
+    
+  }
+
 }
