@@ -25,10 +25,10 @@
                   </Menu>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Relatorios">
+          <Menu fx:id="btRelatiorios" mnemonicParsing="false" text="Relatorios">
             <items>
-              <MenuItem mnemonicParsing="false" text="Hospedes" />
-                  <MenuItem mnemonicParsing="false" text="Reservas" />
+              <MenuItem mnemonicParsing="false" onAction="#relatorioHospedes" text="Hospedes" />
+                  <MenuItem mnemonicParsing="false" onAction="#relatorioHospedagens" text="Hospedagens" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Manutenção">
