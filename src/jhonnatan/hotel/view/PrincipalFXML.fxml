@@ -39,7 +39,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Sair">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#fechaSistema" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#fechaSistema" text="Sair" />
                </items>
             </Menu>
         </menus>
@@ -63,7 +63,7 @@
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="15.0" layoutY="191.0" mnemonicParsing="false" onAction="#sairDaAplicacao" prefHeight="67.0" prefWidth="90.0" text="Sair">
+            <Button layoutX="15.0" layoutY="191.0" mnemonicParsing="false" onAction="#sairDaAplicacao" prefHeight="67.0" prefWidth="90.0" text="Logout">
                <VBox.margin>
                   <Insets left="5.0" top="15.0" />
                </VBox.margin>
