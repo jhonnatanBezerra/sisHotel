@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioHospedagens" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21199770-c3c1-45f4-a8b0-b243e938a432">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="hospede" class="java.lang.String"/>
+	<field name="numeroAP" class="java.lang.String"/>
+	<field name="dataEntrada" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="30" width="380" height="30" forecolor="#DE1A16" uuid="f851f7de-1223-4c11-a281-65ebc6d1ac72"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Relatorio de Hospedagens - Hotel Vegas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="30" uuid="de5666e6-9ee5-4749-8223-dcb53ff590d5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="06c31b7e-1dd1-4c2c-9b5a-026e691da576"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="30" uuid="49a74cee-4fd6-4237-a2f9-51fae62deaef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b985c0b6-f705-4ce2-a2e4-30eef68361d0"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Hospede]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="30" uuid="33283d52-74eb-4570-8919-25c4a67d110a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e13ad07-bfbd-48bf-af89-5f655a07a033"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Numero do Aartamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="30" uuid="296e147d-53db-481b-b501-1097fbcb1402">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="479e2be4-f7ab-41ec-9800-01ce522d86ec"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Data de Entrada]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" uuid="d0c667b2-6a2b-4304-8d5d-b6d9571bea6c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="06c31b7e-1dd1-4c2c-9b5a-026e691da576"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" uuid="8b5d0fa5-9e6a-4a3b-bb69-9da32453d8a6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b985c0b6-f705-4ce2-a2e4-30eef68361d0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{hospede}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="30" uuid="46ce5391-29ab-417f-bc30-e46be670b419">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e13ad07-bfbd-48bf-af89-5f655a07a033"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{numeroAP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" uuid="43316047-9449-47dc-bce3-ef703b1bbd50">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="479e2be4-f7ab-41ec-9800-01ce522d86ec"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{dataEntrada}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

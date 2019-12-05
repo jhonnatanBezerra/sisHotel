@@ -6,8 +6,12 @@
 package jhonnatan.hotel.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,13 +22,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import jhonnatan.hotel.dao.HospedagemDao;
+import jhonnatan.hotel.dao.HospedeDao;
+import jhonnatan.hotel.model.Hospedagem;
+import jhonnatan.hotel.model.Hospede;
 import jhonnatan.hotel.model.Usuario;
 import jhonnatan.hotel.util.Session;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -41,6 +57,8 @@ public class PrincipalController implements Initializable {
     private MenuBar menuBar;
     @FXML
     private BorderPane panePrincipal;
+    @FXML
+    private Menu btRelatiorios;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -144,6 +162,50 @@ public class PrincipalController implements Initializable {
     @FXML
     private void fechaSistema(ActionEvent event) {
         System.exit(0);
+    }
+
+    @FXML
+    private void relatorioHospedes(ActionEvent event) {
+        try{
+            HospedeDao hdao = new HospedeDao();
+            List<Hospede> lhospede = new ArrayList<>();
+            Hospede h = new Hospede();
+            h.setID(1);
+            h.setNome("teste");
+            h.setCPF("9879879879");
+            
+        
+            lhospede.add(h);
+            System.out.println(lhospede.size());
+        
+            InputStream stream = getClass().getResourceAsStream("/jhonnatan/hotel/controller/RelatorioHospede.jrxml");
+            System.out.println(stream.toString());
+            JasperReport report = JasperCompileManager.compileReport(stream);
+            JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(lhospede));
+            JasperViewer.viewReport(print,false);
+        
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @FXML
+    private void relatorioHospedagens(ActionEvent event) {
+        try {
+            
+            HospedagemDao hdao = new HospedagemDao();
+            
+            InputStream stream = getClass().getResourceAsStream("RelatorioHospedagens.jrxml");
+            JasperReport report = JasperCompileManager.compileReport(stream);
+            JasperPrint print = JasperFillManager.fillReport(report,null, new JRBeanCollectionDataSource(hdao.listar()));
+            JasperViewer.viewReport(print,false);
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
