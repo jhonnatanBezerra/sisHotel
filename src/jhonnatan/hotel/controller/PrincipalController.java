@@ -205,5 +205,19 @@ public class PrincipalController implements Initializable {
         }
     }
     
+      @FXML
+    void btAbreReserva(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/jhonnatan/hotel/view/ReservaFXML.fxml"));
+            Scene cena = new Scene(pane);
+            Stage stage = new Stage();
+            stage.setScene(cena);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

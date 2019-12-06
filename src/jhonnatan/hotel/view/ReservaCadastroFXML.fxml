@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.ReservaCadastroController">
+   <children>
+      <Label text="Nome Hospede">
+         <VBox.margin>
+            <Insets left="178.0" top="40.0" />
+         </VBox.margin>
+      </Label>
+      <TextField>
+         <VBox.margin>
+            <Insets left="138.0" right="289.0" />
+         </VBox.margin>
+      </TextField>
+      <Label layoutX="10.0" layoutY="10.0" text="Data Chegada">
+         <VBox.margin>
+            <Insets left="178.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <DatePicker>
+         <VBox.margin>
+            <Insets left="138.0" />
+         </VBox.margin>
+      </DatePicker>
+      <Label layoutX="10.0" layoutY="161.0" text="Quantidade de Acompanhante">
+         <VBox.margin>
+            <Insets left="141.0" right="100.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <TextField layoutX="10.0" layoutY="102.0">
+         <VBox.margin>
+            <Insets left="138.0" right="298.0" />
+         </VBox.margin>
+      </TextField>
+      <Label layoutX="10.0" layoutY="52.0" text="Diarias">
+         <VBox.margin>
+            <Insets left="204.0" right="100.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <TextField layoutX="10.0" layoutY="77.0" prefHeight="25.0" prefWidth="390.0">
+         <VBox.margin>
+            <Insets bottom="25.0" left="138.0" right="298.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" text="Cancelar">
+               <HBox.margin>
+                  <Insets left="150.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Salvar">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

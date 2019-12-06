@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="393.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jhonnatan.hotel.controller.ReservaController">
+   <children>
+      <TableView fx:id="tabelaReservas" layoutX="18.0" layoutY="62.0" prefHeight="255.0" prefWidth="370.0">
+        <columns>
+          <TableColumn fx:id="clmID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="clmNome" prefWidth="97.0" text="Reserva para" />
+            <TableColumn fx:id="clmData" prefWidth="97.0" text="Data Chegada" />
+            <TableColumn fx:id="clmAcompanhantes" prefWidth="97.0" text="Acompanhantes" />
+        </columns>
+      </TableView>
+      <Button fx:id="btCancela" layoutX="30.0" layoutY="334.0" mnemonicParsing="false" onAction="#btVoltaPrincipal" text="Cancela" AnchorPane.topAnchor="334.0" />
+      <Button layoutX="210.0" layoutY="334.0" mnemonicParsing="false" onAction="#editaRes" prefHeight="25.0" prefWidth="58.0" text="Editar" AnchorPane.topAnchor="334.0" />
+      <TextField fx:id="txtBusca" layoutX="18.0" layoutY="24.0" AnchorPane.leftAnchor="18.0" />
+      <Button layoutX="188.0" layoutY="24.0" mnemonicParsing="false" onAction="#btBuscar" text="Buscar" AnchorPane.leftAnchor="190.0" />
+      <Button layoutX="257.0" layoutY="24.0" mnemonicParsing="false" onAction="#btNovaReserva" text="Nova Reserva" />
+      <Button fx:id="btExcluir" layoutX="120.0" layoutY="334.0" mnemonicParsing="false" onAction="#btExcluirRes" text="Excluir" />
+   </children>
+</AnchorPane>
